@@ -19,7 +19,10 @@ class PetItem extends StatelessWidget {
       minSize: 0,
       padding: EdgeInsets.zero,
       onPressed: () {
-        Navigator.of(context).pushNamed(DetailScreen.routeName);
+        Navigator.of(context).pushNamed(
+          DetailScreen.routeName,
+          arguments: pet.petId,
+        );
       },
       child: SizedBox(
         width: 140,
@@ -29,7 +32,7 @@ class PetItem extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(18),
               child: CachedNetworkImage(
-                imageUrl: pet.photo,
+                imageUrl: pet.photos[0],
                 height: 140,
                 width: 140,
                 fit: BoxFit.cover,
@@ -61,7 +64,7 @@ class PetItem extends StatelessWidget {
             Row(
               children: [
                 SvgPicture.asset(
-                  AppIcons.icLocation,
+                  AppIcons.icAddress,
                   width: 16,
                   height: 16,
                 ),

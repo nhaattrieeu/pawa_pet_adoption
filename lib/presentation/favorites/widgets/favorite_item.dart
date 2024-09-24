@@ -6,6 +6,7 @@ import 'package:pawa_pet_adoption/domain/entities/pet.dart';
 
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/icons.dart';
+import '../../detail/screen/detail_screen.dart';
 
 class FavoriteItem extends StatelessWidget {
   const FavoriteItem({super.key, required this.pet});
@@ -20,13 +21,18 @@ class FavoriteItem extends StatelessWidget {
         return CupertinoButton(
           minSize: 0,
           padding: EdgeInsets.zero,
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(
+              DetailScreen.routeName,
+              arguments: pet.petId,
+            );
+          },
           child: Column(
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(18),
                 child: CachedNetworkImage(
-                  imageUrl: pet.photo,
+                  imageUrl: pet.photos[0],
                   width: width,
                   height: width,
                   fit: BoxFit.cover,
@@ -58,7 +64,7 @@ class FavoriteItem extends StatelessWidget {
               Row(
                 children: [
                   SvgPicture.asset(
-                    AppIcons.icLocation,
+                    AppIcons.icAddress,
                     width: 16,
                     height: 16,
                   ),

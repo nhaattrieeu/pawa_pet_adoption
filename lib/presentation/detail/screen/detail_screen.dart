@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:pawa_pet_adoption/core/constants/colors.dart';
-import 'package:pawa_pet_adoption/core/constants/icons.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pawa_pet_adoption/presentation/detail/cubit/detail_cubit.dart';
+import 'package:pawa_pet_adoption/presentation/detail/widgets/detail_body.dart';
+import 'package:pawa_pet_adoption/presentation/detail/widgets/detail_navigation.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
@@ -10,38 +11,23 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var petId = ModalRoute.of(context)!.settings.arguments as String;
+    context.read<DetailCubit>().getDetailData("1");
+
     return CupertinoPageScaffold(
       child: SafeArea(
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CupertinoButton(
-                  onPressed: () {},
-                  child: Icon(
-                    CupertinoIcons.back,
-                    color: AppColors.black,
-                    size: 28,
-                  ),
-                ),
-                Text(
-                  "Detail",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.black,
-                  ),
-                ),
-                CupertinoButton(
-                  onPressed: () {},
-                  child: SvgPicture.asset(
-                    AppIcons.icShare,
-                    width: 24,
-                    height: 24,
-                  ),
-                ),
-              ],
+            const DetailNavigation(),
+            BlocBuilder<DetailCubit, DetailState>(
+              builder: (context, state) {
+                if (state is DetailSuccess) {
+                  var petDetail = state.petDetail;
+                  return DetailBody(petDetail: petDetail);
+                } else {
+                  return const Placeholder();
+                }
+              },
             ),
           ],
         ),
