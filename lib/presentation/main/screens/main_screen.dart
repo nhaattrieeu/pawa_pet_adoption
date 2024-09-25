@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:pawa_pet_adoption/core/constants/colors.dart';
 import 'package:pawa_pet_adoption/core/utils/permission_handle.dart';
 import 'package:pawa_pet_adoption/presentation/maps/presentation/maps_screen.dart';
+import 'package:pawa_pet_adoption/presentation/profile/screen/profile_screen.dart';
 
 import '../../favorites/screen/favorites_screen.dart';
 import '../../home/screen/home_screen.dart';
@@ -23,8 +24,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   void req() async {
-    var a = await PermissionHandle.checkLocationPermission();
-    print(a);
+    await PermissionHandle.checkLocationPermission();
   }
 
   @override
@@ -58,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
         } else if (index == 2) {
           return const FavoritesScreen();
         } else {
-          return const Placeholder();
+          return const ProfileScreen();
         }
       },
     );

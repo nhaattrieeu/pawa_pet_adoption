@@ -16,6 +16,8 @@ class DetailBody extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
 
+    bool favorite = petDetail.favorite;
+
     return Expanded(
       child: Column(
         children: [
@@ -278,21 +280,30 @@ class DetailBody extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 18),
             child: Row(
               children: [
-                CupertinoButton(
-                  onPressed: () {},
-                  color: AppColors.secondaryColor,
-                  borderRadius: BorderRadius.circular(28),
-                  minSize: 0,
-                  padding: const EdgeInsets.all(16),
-                  child: SvgPicture.asset(
-                    AppIcons.icAddFavorite,
-                    width: 24,
-                    height: 24,
-                  ),
+                StatefulBuilder(
+                  builder: (context, setState) {
+                    return CupertinoButton(
+                      onPressed: () {
+                        setState(() {
+                          favorite = !favorite;
+                        });
+                      },
+                      color: AppColors.secondaryColor,
+                      borderRadius: BorderRadius.circular(28),
+                      minSize: 0,
+                      padding: const EdgeInsets.all(16),
+                      child: SvgPicture.asset(
+                        favorite ? AppIcons.icHeart : AppIcons.icAddFavorite,
+                        width: 24,
+                        height: 24,
+                      ),
+                    );
+                  },
                 ),
                 const Gap(18),
                 Expanded(
                   child: CupertinoButton.filled(
+                    padding: const EdgeInsets.symmetric(vertical: 18),
                     onPressed: () {},
                     borderRadius: BorderRadius.circular(36),
                     child: const Text(
@@ -306,7 +317,7 @@ class DetailBody extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
