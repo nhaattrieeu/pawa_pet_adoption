@@ -61,10 +61,10 @@ class HomeHeader extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 79;
+  double get maxExtent => 80;
 
   @override
-  double get minExtent => 79;
+  double get minExtent => 80;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {

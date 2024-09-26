@@ -9,7 +9,10 @@ class PetPreferenceModalPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double paddingBottom = MediaQuery.of(context).padding.bottom;
+
     return Container(
+      padding: EdgeInsets.only(bottom: paddingBottom),
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.white,
@@ -17,7 +20,7 @@ class PetPreferenceModalPopup extends StatelessWidget {
           top: Radius.circular(32),
         ),
       ),
-      height: 300,
+      height: 330,
       child: Column(
         children: [
           const Gap(24),
@@ -77,29 +80,27 @@ class PetPreferenceModalPopup extends StatelessWidget {
               children: [
                 Expanded(
                   child: CupertinoButton(
-                    minSize: 0,
-                    padding: EdgeInsets.zero,
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 18,
+                    minSize: 0,
+                    padding: EdgeInsets.zero,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        border: Border.all(
+                          width: 2,
+                          color: AppColors.primaryColor,
                         ),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                              color: AppColors.primaryColor,
-                            ),
-                            borderRadius: BorderRadius.circular(36)),
-                        child: Center(
-                          child: Text(
-                            "Cancel",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: AppColors.primaryColor,
-                            ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Cancel",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.primaryColor,
                           ),
                         ),
                       ),
@@ -125,7 +126,7 @@ class PetPreferenceModalPopup extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
