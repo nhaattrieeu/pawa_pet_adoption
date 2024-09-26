@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:pawa_pet_adoption/presentation/home/cubit/home_cubit.dart';
+import 'package:pawa_pet_adoption/presentation/home/widgets/list_pet_shimmer_loading.dart';
 
 import '../widgets/home_banner.dart';
 import '../widgets/home_categories.dart';
@@ -37,7 +38,12 @@ class HomeScreen extends StatelessWidget {
                 BlocBuilder<HomeCubit, HomeState>(
                   builder: (context, state) {
                     if (state.pets.isEmpty) {
-                      return const Placeholder();
+                      return const Column(
+                        children: [
+                          ListPetShimmerLoading(title: "Pets near you"),
+                          ListPetShimmerLoading(title: "Pets near you"),
+                        ],
+                      );
                     } else {
                       return Column(
                         children: [

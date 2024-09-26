@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pawa_pet_adoption/presentation/detail/cubit/detail_cubit.dart';
 import 'package:pawa_pet_adoption/presentation/detail/widgets/detail_body.dart';
 import 'package:pawa_pet_adoption/presentation/detail/widgets/detail_navigation.dart';
+import 'package:pawa_pet_adoption/presentation/detail/widgets/detail_shimmer_loading.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
@@ -25,7 +26,7 @@ class DetailScreen extends StatelessWidget {
                   var petDetail = state.petDetail;
                   return DetailBody(petDetail: petDetail);
                 } else {
-                  return const Placeholder();
+                  return const DetailShimmerLoading();
                 }
               },
             ),

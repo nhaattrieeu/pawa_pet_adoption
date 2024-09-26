@@ -15,8 +15,7 @@ class UserInfo extends StatelessWidget {
       children: [
         Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(36),
+            ClipOval(
               child: CachedNetworkImage(
                 imageUrl:
                     "https://raw.githubusercontent.com/nhaattrieeu/temp_storage/refs/heads/main/432700301_935128371414362_7593378051883446897_n.jpg",

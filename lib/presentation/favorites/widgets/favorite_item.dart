@@ -60,7 +60,7 @@ class FavoriteItem extends StatelessWidget {
                   ),
                 ],
               ),
-              const Gap(12),
+              const Gap(10),
               Row(
                 children: [
                   SvgPicture.asset(
