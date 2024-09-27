@@ -6,6 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:pawa_pet_adoption/presentation/detail/screen/detail_screen.dart';
 
 import '../../../core/constants/colors.dart';
 
@@ -21,15 +22,22 @@ class _MapSampleState extends State<MapSample> {
   List<Marker> markers = [];
 
   ///
-  Future<void> createCustomMarker(String id, LatLng latLng) async {
+  Future<void> createCustomMarker(
+      String id, String imagePath, LatLng latLng) async {
     Uint8List markerIcon = await _getMarkerIconFromUrl(
-      'https://lh3.googleusercontent.com/a/ACg8ocL0lfmnlIWcGym353YSy9cvJuIMiMaSZdaInjmwMgToCFzt8aI=s576-c-no',
+      imagePath,
       120,
     );
 
     setState(() {
       markers.add(
         Marker(
+          onTap: () {
+            Navigator.of(context).pushNamed(
+              DetailScreen.routeName,
+              arguments: id,
+            );
+          },
           markerId: MarkerId(id),
           position: latLng,
           icon: BitmapDescriptor.fromBytes(markerIcon),
@@ -72,7 +80,7 @@ class _MapSampleState extends State<MapSample> {
       canvas: canvas,
       image: image,
       rect: Rect.fromLTWH(0, 0, size, size),
-      fit: BoxFit.contain,
+      fit: BoxFit.cover,
     );
 
     final Paint borderPaint = Paint()
@@ -115,10 +123,18 @@ class _MapSampleState extends State<MapSample> {
 
   @override
   void initState() {
-    createCustomMarker("1", const LatLng(10.893053, 106.766618));
-    createCustomMarker("2", const LatLng(10.897053, 106.763618));
-    createCustomMarker("3", const LatLng(10.893853, 106.766118));
-    createCustomMarker("4", const LatLng(10.894053, 106.761618));
+    createCustomMarker(
+        "1",
+        "https://raw.githubusercontent.com/nhaattrieeu/temp_storage/refs/heads/main/cat.jpg",
+        const LatLng(10.893053, 106.766618));
+    createCustomMarker(
+        "2",
+        "https://raw.githubusercontent.com/nhaattrieeu/temp_storage/refs/heads/main/dog.jpg",
+        const LatLng(10.897053, 106.763618));
+    createCustomMarker(
+        "3",
+        "https://raw.githubusercontent.com/nhaattrieeu/temp_storage/refs/heads/main/rabbit.jpg",
+        const LatLng(10.893853, 106.766118));
     super.initState();
   }
 
@@ -136,6 +152,7 @@ class _MapSampleState extends State<MapSample> {
         zoomControlsEnabled: false,
         initialCameraPosition: initialPosition,
         markers: markers.toSet(),
+        mapToolbarEnabled: false,
         onMapCreated: (controller) {
           googleMapController = controller;
           goToCurrentPosition();

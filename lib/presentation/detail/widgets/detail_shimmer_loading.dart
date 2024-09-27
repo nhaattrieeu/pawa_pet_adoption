@@ -28,7 +28,7 @@ class DetailShimmerLoading extends StatelessWidget {
             ),
             const Gap(24),
             Container(
-              width: 150,
+              width: 200,
               height: 24,
               decoration: BoxDecoration(
                 color: AppColors.white,

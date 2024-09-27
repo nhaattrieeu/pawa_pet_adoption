@@ -6,4 +6,6 @@ class AppIcons {
   static String icLocation = "assets/icons/ic_location.svg";
   static String icAddFavorite = "assets/icons/ic_add_favorite.svg";
   static String icHeart = "assets/icons/ic_heart.svg";
+  static String icGoogle = "assets/icons/ic_google.svg";
+  static String icApple = "assets/icons/ic_apple.svg";
 }

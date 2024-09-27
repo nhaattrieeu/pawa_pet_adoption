@@ -65,14 +65,14 @@ class DetailBody extends StatelessWidget {
                           children: [
                             SvgPicture.asset(
                               AppIcons.icAddress,
-                              width: 16,
-                              height: 16,
+                              width: 20,
+                              height: 20,
                             ),
                             Text(
                               "1.2KM",
                               style: TextStyle(
                                 color: AppColors.gray,
-                                fontSize: 12,
+                                fontSize: 16,
                                 fontWeight: FontWeight.w400,
                               ),
                             ),
@@ -91,7 +91,7 @@ class DetailBody extends StatelessWidget {
                                 "Ho Chi Minh",
                                 style: TextStyle(
                                   color: AppColors.gray,
-                                  fontSize: 12,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w400,
                                 ),
                                 overflow: TextOverflow.ellipsis,

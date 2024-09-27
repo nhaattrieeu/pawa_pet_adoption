@@ -4,7 +4,7 @@ class Pet extends Equatable {
   final String petId;
   final String name;
   final String gender;
-  final List<String> photos;
+  final String photo;
   final double latitude;
   final double longitude;
 
@@ -12,11 +12,11 @@ class Pet extends Equatable {
     required this.petId,
     required this.name,
     required this.gender,
-    required this.photos,
+    required this.photo,
     required this.latitude,
     required this.longitude,
   });
 
   @override
-  List<Object> get props => [petId, name, gender, photos, latitude, longitude];
+  List<Object> get props => [petId, name, gender, photo, latitude, longitude];
 }

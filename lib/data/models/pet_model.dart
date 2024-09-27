@@ -5,20 +5,18 @@ class PetModel extends Pet {
     required super.petId,
     required super.name,
     required super.gender,
-    required super.photos,
+    required super.photo,
     required super.latitude,
     required super.longitude,
   });
 
   factory PetModel.fromJson(Map<String, dynamic> json) {
-    List<dynamic> photos = json["photos"];
-    var listPhoto = photos.map((e) => e.toString()).toList();
 
     return PetModel(
       petId: json["petId"],
       name: json["name"],
       gender: json["gender"],
-      photos: listPhoto,
+      photo: json["photo"],
       latitude: json["latitude"],
       longitude: json["longitude"],
     );
@@ -29,7 +27,7 @@ class PetModel extends Pet {
       "petId": petId,
       "name": name,
       "gender": gender,
-      "photos": photos,
+      "photo": photo,
       "latitude": latitude,
       "longitude": longitude,
     };

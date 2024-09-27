@@ -32,7 +32,7 @@ class FavoriteItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(18),
                 child: CachedNetworkImage(
-                  imageUrl: pet.photos[0],
+                  imageUrl: pet.photo,
                   width: width,
                   height: width,
                   fit: BoxFit.cover,

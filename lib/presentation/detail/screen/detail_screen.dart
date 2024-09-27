@@ -13,7 +13,7 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var petId = ModalRoute.of(context)!.settings.arguments as String;
-    context.read<DetailCubit>().getDetailData("1");
+    context.read<DetailCubit>().getDetailData(petId);
 
     return CupertinoPageScaffold(
       child: SafeArea(

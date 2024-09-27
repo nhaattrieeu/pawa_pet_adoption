@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:gap/gap.dart';
+import 'package:pawa_pet_adoption/presentation/auth/screen/sign_in_screen.dart';
 import 'package:pawa_pet_adoption/presentation/profile/widgets/pet_preference_modal_popup.dart';
 import 'package:pawa_pet_adoption/presentation/profile/widgets/profile_selection_title.dart';
 
@@ -180,7 +181,12 @@ class ProfileSelection extends StatelessWidget {
         ),
         const Gap(10),
         CupertinoButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              SignInScreen.routeName,
+              (route) => false,
+            );
+          },
           minSize: 0,
           padding: EdgeInsets.zero,
           child: const CupertinoFormRow(
